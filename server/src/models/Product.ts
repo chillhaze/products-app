@@ -5,6 +5,10 @@ const types = Object.values(productTypes);
 
 const productSchema: Schema = new Schema(
   {
+    sku: {
+      type: String,
+      required: [true, "SKU is required"],
+    },
     name: {
       type: String,
       required: [true, "Name is required"],
@@ -23,11 +27,13 @@ const productSchema: Schema = new Schema(
       enum: [...types],
       required: [true, "Type is required"],
     },
-    size: { type: Number, required: false },
-    height: { type: Number, required: false },
-    width: { type: Number, required: false },
-    length: { type: Number, required: false },
-    weight: { type: Number, required: false },
+    options: {
+      size: { type: Number, required: false },
+      height: { type: Number, required: false },
+      width: { type: Number, required: false },
+      length: { type: Number, required: false },
+      weight: { type: Number, required: false },
+    },
   },
   { timestamps: true },
 );
