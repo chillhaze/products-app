@@ -17,18 +17,20 @@ export const checkProductParams = async (
     return res.status(409).send(`Product [type:'${type}'] is not allowed`);
 
   let checkTypeParams = false;
-  if (type === dvd && req.body.size) checkTypeParams = true;
+  if (type === dvd && req.body.options.size) checkTypeParams = true;
   if (
     type === furniture &&
-    req.body.height &&
-    req.body.width &&
-    req.body.length
+    req.body.options.height &&
+    req.body.options.width &&
+    req.body.options.length
   )
     checkTypeParams = true;
-  if (type === book && req.body.weight) checkTypeParams = true;
+  if (type === book && req.body.options.weight) checkTypeParams = true;
 
   if (!checkTypeParams) {
-    return res.status(409).send(`Product [type:'${type}'] missing params`);
+    return res
+      .status(409)
+      .send(`Product [type:'${type}'] missing required params`);
   } else {
     next();
   }
