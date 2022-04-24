@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../Button/Button';
 import { Options, Title, Wrapper } from './Header.styled';
 
-type Props = { title: string };
+type Props = { title: string; productsDeleteButtonDisabled?: boolean };
 
-const Header = ({ title }: Props) => {
+const Header = ({ title, productsDeleteButtonDisabled }: Props) => {
   const navigate = useNavigate();
 
   return (
@@ -17,15 +17,17 @@ const Header = ({ title }: Props) => {
             <Button
               type="button"
               parent="Header-List-linkTo"
+              form="#product_form"
               onClick={() => navigate('/product-add')}
             >
               Add
             </Button>
 
             <Button
-              type="button"
+              type="submit"
+              form="#product_delete"
               parent="Header-List-massDeleteBtn"
-              onClick={() => console.log('Header-massDeleteBtn')}
+              isDisabled={productsDeleteButtonDisabled}
             >
               Mass Delete
             </Button>
@@ -38,13 +40,7 @@ const Header = ({ title }: Props) => {
           <Title>{title}</Title>
 
           <Options>
-            <Button
-              // type="button"
-              // onClick={() => console.log('Header-Add-save')}
-              parent="Header-Add-save"
-              form="product_form"
-              type="submit"
-            >
+            <Button type="submit" parent="Header-Add-save" form="#product_form">
               Save
             </Button>
 
@@ -54,6 +50,22 @@ const Header = ({ title }: Props) => {
               onClick={() => navigate('/')}
             >
               Cancel
+            </Button>
+          </Options>
+        </Wrapper>
+      )}
+
+      {title === 'Page not found :(' && (
+        <Wrapper>
+          <Title>{title}</Title>
+
+          <Options>
+            <Button
+              type="button"
+              parent="Header-List-linkTo"
+              onClick={() => navigate('/')}
+            >
+              Home
             </Button>
           </Options>
         </Wrapper>

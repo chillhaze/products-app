@@ -3,7 +3,7 @@ import { IProduct } from "../interfaces/Product.interface";
 
 export default class ProductsService {
   async findAll() {
-    return await Product.find();
+    return await Product.find().sort({ createdAt: -1 });
   }
 
   async addNewProduct(body: IProduct) {

@@ -1,4 +1,4 @@
-import { IProduct } from '../interfaces/product.interface';
+import { INewProduct } from '../interfaces/newProduct.interface';
 import HttpService from './http.service';
 
 class ProductsService extends HttpService {
@@ -17,18 +17,16 @@ class ProductsService extends HttpService {
     return data.data;
   }
 
-  async addProduct(newProduct: IProduct) {
+  async addProduct(newProduct: INewProduct) {
     const { data } = await this.post({
       url: this.productsUrl,
       data: newProduct,
     });
 
-    console.log('addProduct', data);
-
     return data.data;
   }
 
-  async deleteTodo(id: string) {
+  async deleteProduct(id: string) {
     const { data } = await this.delete({
       url: this.productsUrl,
       id,

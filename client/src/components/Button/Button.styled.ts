@@ -11,6 +11,13 @@ export const Btn = styled.button`
   border-radius: ${(props) => props.theme.border.radius(1)};
   cursor: pointer;
 
+  @media (max-width: 470px) {
+    padding-top: ${(props) => props.theme.spacing(0.5)};
+    padding-right: ${(props) => props.theme.spacing(1.5)};
+    padding-bottom: ${(props) => props.theme.spacing(0.5)};
+    padding-left: ${(props) => props.theme.spacing(1.5)};
+  }
+
   &:hover {
     color: ${(props) => props.theme.colors.mainText};
     background-color: ${(props) => props.theme.colors.mainBg};
@@ -31,5 +38,14 @@ export const Btn = styled.button`
     outline-style: solid;
     outline: 1px solid ${(props) => props.theme.colors.primary};
     transition: 200ms linear;
+  }
+
+  &:disabled {
+    background-color: ${(props) => props.theme.colors.darkGrey};
+    color: ${(props) => props.theme.colors.mainText};
+
+    &:hover {
+      cursor: not-allowed;
+    }
   }
 `;

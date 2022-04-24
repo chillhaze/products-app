@@ -3,9 +3,8 @@ import Joi from "joi";
 // JOI validation schema
 export const joiProductSchema = Joi.object({
   sku: Joi.string().required(),
-  name: Joi.string().min(4).required(),
+  name: Joi.string().min(2).required(),
   price: Joi.number().required(),
-  description: Joi.string().required(),
   type: Joi.string().valid("DVD", "FURNITURE", "BOOK").required(),
   options: {
     size: Joi.number(),

@@ -1,11 +1,13 @@
 export interface INewProduct {
-  sku: string;
-  name: string;
-  price: string;
-  type: 'DVD' | 'BOOK' | 'FURNITURE' | string;
-  size?: string;
-  weight?: string;
-  length?: string;
-  height?: string;
-  width?: string;
+  sku: string | undefined;
+  name: string | undefined;
+  price: string | undefined;
+  type: 'DVD' | 'BOOK' | 'FURNITURE' | string | undefined;
+  options: {
+    size?: number;
+    weight?: number;
+    height?: number;
+    width?: number;
+    length?: number;
+  };
 }

@@ -1,9 +1,6 @@
-import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-type Props = {};
-
-const Navigation = (props: Props) => {
+const Navigation = () => {
   let location = useLocation();
 
   let path = '';

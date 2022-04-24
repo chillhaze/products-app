@@ -4,6 +4,7 @@ import { Box, Error, InputItem, InputLabel, Wrapper } from './Input.styled';
 type TError = { [key: string]: string };
 
 type Props = {
+  id: string;
   label: string;
   parent: string;
   handleChange: (e: React.ChangeEvent<any>) => void;
@@ -11,12 +12,21 @@ type Props = {
   errors: TError;
 };
 
-const Input = ({ label, parent, handleChange, value, errors }: Props) => {
+const Input = ({ id, label, parent, handleChange, value, errors }: Props) => {
   const [error, setError] = useState('');
 
   useEffect(() => {
     if (errors) setError(errors[parent]);
   }, [errors, parent]);
+
+  // Uncomment to set type to the field
+  // const handleType = (parent: string) => {
+  //   if (parent === 'sku' || parent === 'name') {
+  //     return 'text';
+  //   } else {
+  //     return 'number';
+  //   }
+  // };
 
   return (
     <Wrapper>
@@ -25,9 +35,10 @@ const Input = ({ label, parent, handleChange, value, errors }: Props) => {
       <Box>
         {error && <Error>{error}</Error>}
         <InputItem
-          id={parent}
+          id={id}
           name={parent}
-          type={'text'}
+          // type={handleType(parent)}
+          type="text"
           onChange={handleChange}
           value={value}
         />

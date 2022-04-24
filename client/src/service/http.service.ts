@@ -1,11 +1,12 @@
 import axios, { Axios } from 'axios';
 import BASE_URL from '../consts/base-url';
-import { IProduct } from '../interfaces/product.interface';
+import { INewProduct } from '../interfaces/newProduct.interface';
+import { IFormValues } from '../interfaces/formValues.interface';
 
 interface IConfig {
   url: string;
   id?: string;
-  data?: IProduct;
+  data?: INewProduct | IFormValues;
 }
 
 class HttpService {
