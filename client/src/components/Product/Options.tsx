@@ -1,4 +1,4 @@
-import React from 'react';
+import { Option, OptionsWrapper } from './Product.styled';
 
 type Props = {
   type: string;
@@ -13,13 +13,13 @@ type Props = {
 
 const Options = ({ type, options }: Props) => {
   return (
-    <div>
-      {type === 'DVD' && <p>Size: {options.size} MB</p>}
+    <OptionsWrapper>
+      {type === 'DVD' && <Option>Size: {options.size} MB</Option>}
       {type === 'FURNITURE' && (
-        <p>{`Dimension: ${options.length}x${options.height}x${options.width}`}</p>
+        <Option>{`Dimension: ${options.length}x${options.height}x${options.width}`}</Option>
       )}
-      {type === 'BOOK' && <p>Weight:{options.weight}KG</p>}
-    </div>
+      {type === 'BOOK' && <Option>Weight: {options.weight}KG</Option>}
+    </OptionsWrapper>
   );
 };
 

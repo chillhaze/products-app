@@ -6,11 +6,10 @@ export const Wrapper = styled.div`
   align-items: center;
   vertical-align: middle;
   margin-bottom: ${(props) => props.theme.spacing(10)};
-  /* padding: ${(props) => props.theme.spacing(2)}; */
 `;
 export const InputLabel = styled.label`
   display: block;
-  width: 120px;
+  width: ${(props) => props.theme.spacing(30)};
 
   font-weight: 700;
   color: ${(props) => props.theme.colors.mainText};
@@ -23,13 +22,18 @@ export const Box = styled.div`
   vertical-align: middle;
 `;
 export const InputItem = styled.input`
-  width: 250px;
-  /* margin-bottom: ${(props) => props.theme.spacing(3)}; */
+  width: ${(props) => props.theme.spacing(65)};
   padding: ${(props) => props.theme.spacing(2)};
   font-style: italic;
+  color: ${(props) => props.theme.colors.mainText};
   background-color: ${(props) => props.theme.colors.mainBg};
   border: ${(props) => props.theme.border.dark.thin};
   border-radius: ${(props) => props.theme.border.radius(1)};
+
+  @media (max-width: 450px) {
+    width: ${(props) => props.theme.spacing(50)};
+  }
+
   &:hover {
     transform: scale(1.01);
   }

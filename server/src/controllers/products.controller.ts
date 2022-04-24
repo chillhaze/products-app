@@ -11,7 +11,7 @@ export class ProductsController {
       status: "success",
       code: 200,
       message: `Found ${products.length} products`,
-      data: [...products],
+      data: products,
     });
   }
 
@@ -26,9 +26,7 @@ export class ProductsController {
       status: "success",
       code: 201,
       message: `Product [name:'${name}', type:'${type}'] created`,
-      data: {
-        createdProduct,
-      },
+      data: createdProduct,
     });
   }
 
@@ -40,9 +38,7 @@ export class ProductsController {
       status: "success",
       code: 200,
       message: `Product [id:'${id}'] deleted`,
-      data: {
-        deletedProduct,
-      },
+      data: deletedProduct,
     });
   }
 }

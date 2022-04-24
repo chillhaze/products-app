@@ -1,10 +1,12 @@
+import { TProductTypes } from '../types/product.type';
+
 export interface IProduct {
   _id: string;
   sku: string;
   name: string;
   price: number;
   description: string;
-  type: 'DVD' | 'FURNITURE' | 'BOOK';
+  type: TProductTypes;
   options: {
     size?: number;
     weight?: number;

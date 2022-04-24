@@ -1,129 +1,168 @@
-import React, { useState } from 'react';
-import { useFormik } from 'formik';
-import { FormWrapper, Select } from './Form.styled';
+import { useState } from 'react';
+import { Formik } from 'formik';
+import {
+  Error,
+  FormWrapper,
+  Select,
+  SelectLabel,
+  SelectWrapper,
+} from './Form.styled';
 import Input from '../Input/Input';
 import productValidation from '../../consts/product.validation';
+import { IFormValues } from '../../interfaces/formValues.interface';
+import { useNavigate } from 'react-router-dom';
 
-type Props = {};
+type Props = {
+  handleFormSubmit: (product: IFormValues) => void;
+};
 
-const Form = (props: Props) => {
-  const [type, setType] = useState('');
+const Form = ({ handleFormSubmit }: Props) => {
+  const [type, setType] = useState('none');
+  const navigate = useNavigate();
 
-  const formik = useFormik({
-    initialValues: {
-      sku: new Date().getTime().toString(),
-      name: '',
-      price: '',
-      type: type,
-      size: '',
-      weight: '',
-      length: '',
-      height: '',
-      width: '',
-    },
-    onSubmit: (values) => {
-      console.log(values);
-    },
-    // validateOnBlur: true,
-    // validateOnChange: true,
-    validationSchema: productValidation,
-  });
+  const initialFormValues: IFormValues = {
+    sku: new Date().getTime().toString(),
+    name: '',
+    price: '',
+    type: type,
+    size: '',
+    weight: '',
+    length: '',
+    height: '',
+    width: '',
+  };
 
   return (
-    <FormWrapper onSubmit={formik.handleSubmit} id="product_form">
-      <Input
-        label="Sku"
-        parent="sku"
-        handleChange={formik.handleChange}
-        value={formik.values.sku}
-        errors={formik.errors}
-      />
-
-      <Input
-        label="Name"
-        parent="name"
-        handleChange={formik.handleChange}
-        value={formik.values.name}
-        errors={formik.errors}
-      />
-
-      <Input
-        label="Price ($)"
-        parent="price"
-        handleChange={formik.handleChange}
-        value={formik.values.price}
-        errors={formik.errors}
-      />
-
-      <Select
-        name="type"
-        value={formik.values.type}
-        onChange={(e) => {
-          setType(e.target.value);
-          formik.handleChange(e);
-        }}
-        onBlur={formik.handleBlur}
-      >
-        <option value="" label="Select type">
-          Select type
-        </option>
-        <option value="DVD" label="DVD">
-          DVD
-        </option>
-        <option value="BOOK" label="BOOK">
-          BOOK
-        </option>
-        <option value="FURNITURE" label="FURNITURE">
-          FURNITURE
-        </option>
-      </Select>
-
-      {type === 'DVD' && (
-        <Input
-          label="Size (MB)"
-          parent="size"
-          handleChange={formik.handleChange}
-          value={formik.values.size}
-          errors={formik.errors}
-        />
-      )}
-
-      {type === 'BOOK' && (
-        <Input
-          label="Weight (KG)"
-          parent="weight"
-          handleChange={formik.handleChange}
-          value={formik.values.weight}
-          errors={formik.errors}
-        />
-      )}
-
-      {type === 'FURNITURE' && (
-        <>
+    <Formik
+      initialValues={{ ...initialFormValues }}
+      validationSchema={() => productValidation(type)}
+      validateOnBlur={false}
+      validateOnChange={false}
+      onSubmit={async (values: IFormValues, actions) => {
+        try {
+          const response = await handleFormSubmit(values);
+          if (response !== null) {
+            actions.resetForm();
+            navigate('/');
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }}
+    >
+      {(formik) => (
+        <FormWrapper onSubmit={formik.handleSubmit} id="#product_form">
           <Input
-            label="Length (CM)"
-            parent="length"
+            label="Sku"
+            parent="sku"
+            id="#sku"
             handleChange={formik.handleChange}
-            value={formik.values.length}
+            value={formik.values.sku}
             errors={formik.errors}
           />
+
           <Input
-            label="Height (CM)"
-            parent="height"
+            id="#name"
+            label="Name"
+            parent="name"
             handleChange={formik.handleChange}
-            value={formik.values.height}
+            value={formik.values.name}
             errors={formik.errors}
           />
+
           <Input
-            label="Width (CM)"
-            parent="width"
+            id="#price"
+            label="Price ($)"
+            parent="price"
             handleChange={formik.handleChange}
-            value={formik.values.width}
+            value={formik.values.price}
             errors={formik.errors}
           />
-        </>
+
+          <SelectWrapper>
+            {formik.errors && formik.errors.type && (
+              <Error>{formik.errors.type}</Error>
+            )}
+
+            <SelectLabel>Type Switcher</SelectLabel>
+            <Select
+              id="#productType"
+              name="type"
+              value={formik.values.type}
+              onChange={(e) => {
+                setType(e.target.value);
+                formik.handleChange(e);
+              }}
+              onBlur={formik.handleBlur}
+            >
+              <option value="none" label="Select type">
+                Select type
+              </option>
+              <option value="DVD" label="DVD">
+                DVD
+              </option>
+              <option value="BOOK" label="BOOK">
+                BOOK
+              </option>
+              <option value="FURNITURE" label="FURNITURE">
+                FURNITURE
+              </option>
+            </Select>
+          </SelectWrapper>
+
+          {type === 'DVD' && (
+            <Input
+              id="#size"
+              label="Size (MB)"
+              parent="size"
+              handleChange={formik.handleChange}
+              value={formik.values.size}
+              errors={formik.errors}
+            />
+          )}
+
+          {type === 'BOOK' && (
+            <Input
+              id="#weight"
+              label="Weight (KG)"
+              parent="weight"
+              handleChange={formik.handleChange}
+              value={formik.values.weight}
+              errors={formik.errors}
+            />
+          )}
+
+          {type === 'FURNITURE' && (
+            <>
+              <Input
+                id="#length"
+                label="Length (CM)"
+                parent="length"
+                handleChange={formik.handleChange}
+                value={formik.values.length}
+                errors={formik.errors}
+              />
+              <Input
+                id="#height"
+                label="Height (CM)"
+                parent="height"
+                handleChange={formik.handleChange}
+                value={formik.values.height}
+                errors={formik.errors}
+              />
+              <Input
+                id="#width"
+                label="Width (CM)"
+                parent="width"
+                handleChange={formik.handleChange}
+                value={formik.values.width}
+                errors={formik.errors}
+              />
+            </>
+          )}
+        </FormWrapper>
       )}
-    </FormWrapper>
+    </Formik>
   );
 };
 

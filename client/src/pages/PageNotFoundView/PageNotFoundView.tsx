@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Header from '../../components/Header/Header';
+import { Wrapper } from './PageNotFound.styled';
 
 const PageNotFoundView: React.FC = () => {
   return (
-    <section>
-      <p>Page not found...</p>
-      <Link to="/">Go to the home page</Link>
-    </section>
+    <Wrapper>
+      <Header title="Page not found :(" />
+    </Wrapper>
   );
 };
 

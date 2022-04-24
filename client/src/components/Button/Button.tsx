@@ -6,11 +6,25 @@ type Props = {
   parent: string;
   onClick?: () => void;
   form?: string;
+  isDisabled?: boolean;
 };
 
-const Button = ({ type, children, parent, onClick, form }: Props) => {
+const Button = ({
+  type,
+  children,
+  parent,
+  onClick,
+  form,
+  isDisabled,
+}: Props) => {
   return (
-    <Btn onClick={onClick} {...parent} form={form} type={type}>
+    <Btn
+      onClick={onClick}
+      {...parent}
+      form={form}
+      type={type}
+      disabled={isDisabled}
+    >
       {children}
     </Btn>
   );

@@ -12,15 +12,11 @@ const productSchema: Schema = new Schema(
     name: {
       type: String,
       required: [true, "Name is required"],
-      minLength: 4,
+      minLength: 2,
     },
     price: {
       type: Number,
       required: [true, "Price is required"],
-    },
-    description: {
-      type: String,
-      required: [true, "Description is required"],
     },
     type: {
       type: String,
