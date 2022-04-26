@@ -9,6 +9,8 @@ type ConnectionOptionsExtend = {
 };
 
 const { mongoURI: DB_URI } = process.env;
+console.log(process.env);
+
 
 const connectDB = async () => {
   try {
