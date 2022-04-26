@@ -1,20 +1,14 @@
 import config from "config";
 import { ConnectOptions, connect } from "mongoose";
-import dotenv from "dotenv";
-dotenv.config();
 
 type ConnectionOptionsExtend = {
   useNewUrlParser: boolean;
   useUnifiedTopology: boolean;
 };
 
-const { mongoURI: DB_URI } = process.env;
-console.log(process.env);
-
-
 const connectDB = async () => {
   try {
-    const mongoURI: string | undefined = config.get("mongoURI") || DB_URI;
+    const mongoURI: string = config.get("mongoURI");
     const options: ConnectOptions & ConnectionOptionsExtend = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
