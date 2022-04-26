@@ -17,7 +17,6 @@ const Header = ({ title, productsDeleteButtonDisabled }: Props) => {
             <Button
               type="button"
               parent="Header-List-linkTo"
-              form="#product_form"
               onClick={() => navigate('/product-add')}
             >
               ADD
@@ -40,7 +39,7 @@ const Header = ({ title, productsDeleteButtonDisabled }: Props) => {
           <Title>{title}</Title>
 
           <Options>
-            <Button type="submit" parent="Header-Add-save" form="#product_form">
+            <Button type="submit" parent="Header-Add-save" form="product_form">
               Save
             </Button>
 

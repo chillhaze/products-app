@@ -51,7 +51,7 @@ const Form = ({ handleFormSubmit }: Props) => {
       }}
     >
       {(formik) => (
-        <FormWrapper onSubmit={formik.handleSubmit} id="#product_form">
+        <FormWrapper onSubmit={formik.handleSubmit} id="product_form">
           <Input
             label="Sku"
             parent="sku"
