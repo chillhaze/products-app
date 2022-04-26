@@ -20,7 +20,7 @@ const Header = ({ title, productsDeleteButtonDisabled }: Props) => {
               form="#product_form"
               onClick={() => navigate('/product-add')}
             >
-              Add
+              ADD
             </Button>
 
             <Button
@@ -29,7 +29,7 @@ const Header = ({ title, productsDeleteButtonDisabled }: Props) => {
               parent="Header-List-massDeleteBtn"
               isDisabled={productsDeleteButtonDisabled}
             >
-              Mass Delete
+              MASS DELETE
             </Button>
           </Options>
         </Wrapper>
