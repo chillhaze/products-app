@@ -1,1 +1,1 @@
-export type TProductTypes = 'DVD' | 'FURNITURE' | 'BOOK';
+export type TProductTypes = 'DVD' | 'Furniture' | 'Book';
