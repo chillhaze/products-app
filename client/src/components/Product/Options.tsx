@@ -15,10 +15,10 @@ const Options = ({ type, options }: Props) => {
   return (
     <OptionsWrapper>
       {type === 'DVD' && <Option>Size: {options.size} MB</Option>}
-      {type === 'FURNITURE' && (
+      {type === 'Furniture' && (
         <Option>{`Dimension: ${options.length}x${options.height}x${options.width}`}</Option>
       )}
-      {type === 'BOOK' && <Option>Weight: {options.weight}KG</Option>}
+      {type === 'Book' && <Option>Weight: {options.weight}KG</Option>}
     </OptionsWrapper>
   );
 };

@@ -101,11 +101,11 @@ const Form = ({ handleFormSubmit }: Props) => {
               <option value="DVD" label="DVD">
                 DVD
               </option>
-              <option value="BOOK" label="BOOK">
-                BOOK
+              <option value="Book" label="Book">
+                Book
               </option>
-              <option value="FURNITURE" label="FURNITURE">
-                FURNITURE
+              <option value="Furniture" label="Furniture">
+                Furniture
               </option>
             </Select>
           </SelectWrapper>
@@ -121,7 +121,7 @@ const Form = ({ handleFormSubmit }: Props) => {
             />
           )}
 
-          {type === 'BOOK' && (
+          {type === 'Book' && (
             <Input
               id="weight"
               label="Weight (KG)"
@@ -132,7 +132,7 @@ const Form = ({ handleFormSubmit }: Props) => {
             />
           )}
 
-          {type === 'FURNITURE' && (
+          {type === 'Furniture' && (
             <>
               <Input
                 id="length"
