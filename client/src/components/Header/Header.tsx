@@ -24,7 +24,7 @@ const Header = ({ title, productsDeleteButtonDisabled }: Props) => {
 
             <Button
               type="submit"
-              form="#product_delete"
+              form="product_delete"
               parent="Header-List-massDeleteBtn"
               isDisabled={productsDeleteButtonDisabled}
             >
