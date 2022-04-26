@@ -55,14 +55,14 @@ const Form = ({ handleFormSubmit }: Props) => {
           <Input
             label="Sku"
             parent="sku"
-            id="#sku"
+            id="sku"
             handleChange={formik.handleChange}
             value={formik.values.sku}
             errors={formik.errors}
           />
 
           <Input
-            id="#name"
+            id="name"
             label="Name"
             parent="name"
             handleChange={formik.handleChange}
@@ -71,7 +71,7 @@ const Form = ({ handleFormSubmit }: Props) => {
           />
 
           <Input
-            id="#price"
+            id="price"
             label="Price ($)"
             parent="price"
             handleChange={formik.handleChange}
@@ -86,7 +86,7 @@ const Form = ({ handleFormSubmit }: Props) => {
 
             <SelectLabel>Type Switcher</SelectLabel>
             <Select
-              id="#productType"
+              id="productType"
               name="type"
               value={formik.values.type}
               onChange={(e) => {
@@ -112,7 +112,7 @@ const Form = ({ handleFormSubmit }: Props) => {
 
           {type === 'DVD' && (
             <Input
-              id="#size"
+              id="size"
               label="Size (MB)"
               parent="size"
               handleChange={formik.handleChange}
@@ -123,7 +123,7 @@ const Form = ({ handleFormSubmit }: Props) => {
 
           {type === 'BOOK' && (
             <Input
-              id="#weight"
+              id="weight"
               label="Weight (KG)"
               parent="weight"
               handleChange={formik.handleChange}
@@ -135,7 +135,7 @@ const Form = ({ handleFormSubmit }: Props) => {
           {type === 'FURNITURE' && (
             <>
               <Input
-                id="#length"
+                id="length"
                 label="Length (CM)"
                 parent="length"
                 handleChange={formik.handleChange}
@@ -143,7 +143,7 @@ const Form = ({ handleFormSubmit }: Props) => {
                 errors={formik.errors}
               />
               <Input
-                id="#height"
+                id="height"
                 label="Height (CM)"
                 parent="height"
                 handleChange={formik.handleChange}
@@ -151,7 +151,7 @@ const Form = ({ handleFormSubmit }: Props) => {
                 errors={formik.errors}
               />
               <Input
-                id="#width"
+                id="width"
                 label="Width (CM)"
                 parent="width"
                 handleChange={formik.handleChange}

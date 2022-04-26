@@ -36,11 +36,11 @@ const Product = ({
     <ListItem>
       <Type>{type}</Type>
 
-      <DeleteForm id="#product_delete" onSubmit={(e) => handleMassDelete(e)}>
+      <DeleteForm id="product_delete" onSubmit={(e) => handleMassDelete(e)}>
         <DeleteText>Delete</DeleteText>
-        <DeleteLabel htmlFor="#checkbox-delete">
+        <DeleteLabel htmlFor="checkbox-delete">
           <DeleteCheckBox
-            id="#checkbox-delete"
+            id="checkbox-delete"
             className="delete-checkbox"
             type="checkbox"
             onChange={(e) => handleCheckboxChecked(e, id)}
