@@ -41,9 +41,7 @@ class HttpService {
   }
 
   async delete(config: IConfig) {
-    return await this.fetchingService.delete(this.getFullApiUrl(config), {
-      params: { _id: config.id },
-    });
+    return await this.fetchingService.delete(this.getFullApiUrl(config));
   }
 }
 

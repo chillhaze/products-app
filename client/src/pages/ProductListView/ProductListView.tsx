@@ -14,13 +14,13 @@ const ProductListView = () => {
     []
   );
 
+  const getProducts = async () => {
+    const res = await productsService.getProducts();
+    if (res) setProducts(res);
+  };
+
   useEffect(() => {
     if (!products) {
-      const getProducts = async () => {
-        const res = await productsService.getProducts();
-        if (res) setProducts(res);
-      };
-
       getProducts();
     }
   }, [products]);
