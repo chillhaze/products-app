@@ -1,5 +1,5 @@
 export const productTypes = {
   dvd: "DVD",
-  furniture: "FURNITURE",
-  book: "BOOK",
+  furniture: "Furniture",
+  book: "Book",
 };

@@ -4,7 +4,7 @@ export interface IProduct extends Document {
   sku: string;
   name: string;
   price: number;
-  type: "DVD" | "FURNITURE" | "BOOK";
+  type: "DVD" | "Furniture" | "Book";
   options: {
     size?: number;
     height?: number;

@@ -26,7 +26,7 @@ const productValidation = (type: string | undefined) => {
         .required(`Size ${isRequired}`)
         .typeError(`Size ${numberType}`),
     });
-  if (type === 'BOOK')
+  if (type === 'Book')
     return object().shape({
       sku: string().min(10).max(15).required(`SKU ${isRequired}`),
       name: string().min(2).max(150).required('Please, submit required data'),
@@ -38,7 +38,7 @@ const productValidation = (type: string | undefined) => {
         .required(`Weight ${isRequired}`)
         .typeError(`Weight ${numberType}`),
     });
-  if (type === 'FURNITURE')
+  if (type === 'Furniture')
     return object().shape({
       sku: string().min(10).max(15).required(`SKU ${isRequired}`),
       name: string().min(2).max(150).required(`Name  ${isRequired}`),

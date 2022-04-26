@@ -1,1 +1,1 @@
-export const productTypes: string[] = ['DVD', 'FURNITURE', 'BOOK'];
+export const productTypes: string[] = ['DVD', 'Furniture', 'Book'];
