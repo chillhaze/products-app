@@ -1,0 +1,5 @@
+{
+  "mongoURI": "mongodb+srv://products-app:products-app0014@products.crfmq.mongodb.net/scndweb",
+  "jwtSecret": "jwtSecretToken",
+  "jwtExpiration": 360000
+}
