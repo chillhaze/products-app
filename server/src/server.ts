@@ -5,7 +5,7 @@ import AppRouter from "./routes";
 import cors from "cors";
 
 const corsOptions = {
-  origin: "products-app-scndwb.netlify.app/",
+  origin: "https://products-app-scndwb.netlify.app",
   credentials: true,
   optionSuccessStatus: 200,
 };
