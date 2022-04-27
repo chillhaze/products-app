@@ -13,6 +13,7 @@ const ProductListView = () => {
   const [productsToDelete, setProductsToDelete] = useState<TProductsToDelete>(
     []
   );
+  const [isChecked, setIsChecked] = useState<string>('');
 
   const getProducts = async () => {
     const res = await productsService.getProducts();
@@ -39,6 +40,7 @@ const ProductListView = () => {
           return [...state, id];
         }
       });
+      setIsChecked('delete-checkbox');
     } else if (!isChecked) {
       setProductsToDelete((state) => {
         if (state) {
@@ -47,6 +49,7 @@ const ProductListView = () => {
           return updatedState;
         }
       });
+      setIsChecked('');
     }
   };
 
@@ -70,6 +73,7 @@ const ProductListView = () => {
                 {...product}
                 handleCheckboxChecked={handleCheckboxChecked}
                 handleMassDelete={handleMassDelete}
+                isChecked={isChecked}
                 key={product._id}
               />
             );
