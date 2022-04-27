@@ -50,8 +50,12 @@ const ProductListView = () => {
     }
   };
 
-  const handleMassDelete = (e: React.FormEvent<HTMLFormElement>) => {
-    productsService?.deleteProduct(productsToDelete);
+  const handleMassDelete = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const res = await productsService?.deleteProduct(productsToDelete);
+    if (res.data.code === 200) {
+      setProducts(null);
+    }
   };
 
   return (
