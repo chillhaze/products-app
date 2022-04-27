@@ -32,6 +32,13 @@ const Product = ({
   handleCheckboxChecked,
   handleMassDelete,
 }: Props) => {
+  const handleClass = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.checked);
+
+    if (e.target.checked) {
+      return 'delete-checkbox';
+    }
+  };
   return (
     <ListItem>
       <Type>{type}</Type>
@@ -42,6 +49,7 @@ const Product = ({
           <DeleteCheckBox
             id="checkbox-delete"
             // className="delete-checkbox"
+            className={`${handleClass}`}
             type="checkbox"
             onChange={(e) => handleCheckboxChecked(e, id)}
           />
