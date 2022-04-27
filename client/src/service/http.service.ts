@@ -6,6 +6,7 @@ import { IFormValues } from '../interfaces/formValues.interface';
 interface IConfig {
   url: string;
   id?: string;
+  ids?: string[];
   data?: INewProduct | IFormValues;
 }
 
@@ -41,7 +42,9 @@ class HttpService {
   }
 
   async delete(config: IConfig) {
-    return await this.fetchingService.delete(this.getFullApiUrl(config));
+    return await this.fetchingService.post(this.getFullApiUrl(config), {
+      ids: config.ids,
+    });
   }
 }
 

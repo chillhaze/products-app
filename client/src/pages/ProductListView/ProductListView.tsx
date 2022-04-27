@@ -51,7 +51,7 @@ const ProductListView = () => {
   };
 
   const handleMassDelete = (e: React.FormEvent<HTMLFormElement>) => {
-    productsToDelete?.forEach((id) => productsService.deleteProduct(id));
+    productsService?.deleteProduct(productsToDelete);
   };
 
   return (

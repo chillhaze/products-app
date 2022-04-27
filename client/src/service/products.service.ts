@@ -26,13 +26,12 @@ class ProductsService extends HttpService {
     return data.data;
   }
 
-  async deleteProduct(id: string) {
-    const { data } = await this.delete({
-      url: this.productsUrl,
-      id,
+  async deleteProduct(ids: string[] | undefined) {
+    const res = await this.delete({
+      url: `${this.productsUrl}/massDeleteProducts`,
+      ids,
     });
-
-    return data.data;
+    return res;
   }
 }
 

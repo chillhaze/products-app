@@ -5,6 +5,7 @@ import { joiProductSchema } from "../../schemas/joiProductSchema";
 import { checkExistingProduct } from "../../middlewares/checkExistingProduct";
 import { checkProductParams } from "../../middlewares/checkProductParams";
 import { checkProductById } from "../../middlewares/checkProductById";
+import { checkProductsArrayById } from "../../middlewares/checkProductsArrayById";
 
 const validateMiddleware = validation(joiProductSchema);
 const productsRouter: Router = Router();
@@ -26,6 +27,12 @@ productsRouter.delete(
   "/:id",
   checkProductById,
   productsController.deleteProduct.bind(productsController),
+);
+
+productsRouter.post(
+  "/massDeleteProducts",
+  checkProductsArrayById,
+  productsController.massDeleteProducts.bind(productsController),
 );
 
 export default productsRouter;
