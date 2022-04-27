@@ -41,7 +41,7 @@ const Product = ({
         <DeleteLabel htmlFor="checkbox-delete">
           <DeleteCheckBox
             id="checkbox-delete"
-            className="delete-checkbox"
+            // className="delete-checkbox"
             type="checkbox"
             onChange={(e) => handleCheckboxChecked(e, id)}
           />
