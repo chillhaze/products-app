@@ -20,7 +20,6 @@ type Props = IProduct & {
     id: string
   ) => void;
   handleMassDelete: (e: React.FormEvent<HTMLFormElement>) => void;
-  isChecked: string;
 };
 
 const Product = ({
@@ -32,7 +31,6 @@ const Product = ({
   options,
   handleCheckboxChecked,
   handleMassDelete,
-  isChecked,
 }: Props) => {
   return (
     <ListItem>
@@ -43,7 +41,7 @@ const Product = ({
         <DeleteLabel htmlFor="checkbox-delete">
           <DeleteCheckBox
             id="checkbox-delete"
-            className={isChecked}
+            className="delete-checkbox"
             type="checkbox"
             onChange={(e) => handleCheckboxChecked(e, id)}
           />
