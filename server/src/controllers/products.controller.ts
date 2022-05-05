@@ -32,7 +32,7 @@ export class ProductsController {
 
   async deleteProduct(req: Request, res: Response) {
     const { id } = req.params;
-    const deletedProduct = await this.productsService.deleteProduct(id);
+    const deletedProduct = await this.productsService.deleteProduct([id]);
 
     res.status(200).json({
       status: "success",
@@ -44,14 +44,12 @@ export class ProductsController {
 
   async massDeleteProducts(req: Request, res: Response) {
     const { ids } = req.body;
-    ids.forEach(
-      async (id: string) => await this.productsService.deleteProduct(id),
-    );
+    const result = await this.productsService.deleteProduct(ids);
 
     res.status(200).json({
       status: "success",
       code: 200,
-      message: `Products ids: ${ids} deleted`,
+      message: `Products deleted: ${result.deletedCount}`,
     });
   }
 }

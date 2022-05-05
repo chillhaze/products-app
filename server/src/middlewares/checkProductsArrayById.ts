@@ -6,19 +6,20 @@ export const checkProductsArrayById = async (
   res: Response,
   next: NextFunction,
 ) => {
-  try {
-    const { ids } = req.body;
-    ids.forEach(async (id: string) => {
-      const product = await Product.findById({
-        _id: id,
-      });
+  const { ids } = req.body;
+  if (!ids) {
+    res.status(409).send(`Error! id is required`);
+  }
 
-      if (!product) {
-        res.status(409).send(`Product [id:'${id}'] not found`);
-      } else {
-        next();
-      }
+  try {
+    const products = await Product.find({
+      _id: { $in: ids },
     });
+    if (products.length === 0) {
+      res.status(409).send(`Products not found`);
+    } else {
+      next();
+    }
   } catch (error) {
     next(error);
   }

@@ -10,9 +10,9 @@ export default class ProductsService {
     return await Product.create({ ...body });
   }
 
-  async deleteProduct(id: string) {
-    return await Product.findByIdAndRemove({
-      _id: id,
+  async deleteProduct(ids: string[]) {
+    return await Product.deleteMany({
+      _id: { $in: ids },
     });
   }
 }
